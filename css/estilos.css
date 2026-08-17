@@ -14,6 +14,7 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
     max-height:none;
     height:auto;
 	
+	
   }
   body.tab-pedido{overflow:hidden;height:100%;height:100dvh}
   body.tab-pedido .screen-pedido.active{
