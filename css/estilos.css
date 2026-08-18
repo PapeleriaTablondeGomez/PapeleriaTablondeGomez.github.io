@@ -5,15 +5,14 @@ html{height:auto;-webkit-text-size-adjust:100%}
 body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f4;color:#1a1a1a;
   padding-bottom:calc(var(--dock-h) + var(--checkout-h) + var(--safe-b) + 8px);overflow-x:hidden}
 @media(max-width:767px){
-  html,body{height:auto;max-height:none;overflow-x:hidden;overflow-y:auto}
-  body{padding-bottom:calc(var(--dock-h) + var(--checkout-h) + var(--safe-b) + 12px);overscroll-behavior-y:contain}
+  html{height:auto;max-height:none;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  body{height:auto;max-height:none;overflow:visible;padding-bottom:calc(var(--dock-h) + var(--checkout-h) + var(--safe-b) + 12px)}
   #app{min-height:0;overflow:visible}
   .screen-catalog.active{
     display:block;
     overflow:visible;
     max-height:none;
     height:auto;
-	
   }
   body.tab-pedido{overflow:hidden;height:100%;height:100dvh}
   body.tab-pedido .screen-pedido.active{
@@ -216,4 +215,46 @@ body.cat-modal-open .cat-caratulas-foot{padding:12px 16px}
   .p-preview-lbl{font-size:0.68rem;margin-top:2px}
   .btn-card-plus{align-self:center;margin-top:4px}
   .screen-pedido.active{min-height:0;height:100vh;position:sticky;top:0}
+}
+@media(max-width:767px){
+  html{
+    height:auto!important;
+    max-height:none!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  body{
+    height:auto!important;
+    max-height:none!important;
+    min-height:0!important;
+    overflow:visible!important;
+    position:static!important;
+    overscroll-behavior-y:auto;
+    touch-action:pan-y;
+  }
+  body.tab-pedido{
+    overflow:hidden!important;
+    height:100%!important;
+    height:100dvh!important;
+    touch-action:auto;
+  }
+  #app,.screen-catalog,.screen-catalog.active{
+    height:auto!important;
+    max-height:none!important;
+    min-height:0!important;
+    overflow:visible!important;
+    transform:none;
+    touch-action:pan-y;
+  }
+  .search-wrap,.sort-wrap{
+    position:relative!important;
+    top:auto!important;
+    z-index:1;
+  }
+  .product-list,.cat-layout-section-grid,.cat-layout-product-cell{
+    overflow:visible!important;
+    contain:none;
+    touch-action:pan-y;
+  }
 }
