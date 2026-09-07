@@ -241,12 +241,17 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
 .breb-qr-card img{width:184px;height:184px}
 .breb-valor{display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:10px 12px;margin-bottom:10px}
 .breb-nombre{text-align:center;font-size:1.02rem;margin:4px 0 10px}
-.breb-llave{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#3d2a55;color:#fff;border:none;border-radius:12px;padding:12px;font-size:1.15rem;font-weight:700;cursor:pointer}
+.breb-llave{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;background:#3d2a55;color:#fff;border:none;border-radius:12px;padding:12px 14px;cursor:pointer}
+.breb-llave-num{font-size:1.22rem;font-weight:800;letter-spacing:.06em}
+.breb-llave-copy{font-size:0.78rem;font-weight:700;opacity:.95;background:rgba(255,255,255,.14);padding:5px 12px;border-radius:999px}
 .breb-etiq{text-align:center;font-weight:800;margin:10px 0 8px}
 .breb-hint{text-align:center;font-size:0.72rem;color:rgba(255,255,255,.72);line-height:1.35;margin:0 0 12px}
 .breb-acciones{display:flex;flex-direction:column;gap:8px}
 .breb-btn-ok{background:#69f0ae;color:#1a0b2e;border:none;border-radius:10px;padding:11px 12px;font-weight:800;cursor:pointer}
 .breb-btn-ok:disabled{opacity:.55;cursor:wait}
+.breb-dl-row{display:flex;gap:8px}
+.breb-btn-dl{flex:1;background:#3d2a55;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:10px 8px;font-weight:700;font-size:0.76rem;cursor:pointer;line-height:1.25}
+.breb-btn-dl:disabled{opacity:.55;cursor:wait}
 .breb-btn-cancel{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 12px;cursor:pointer}
 @media(min-width:768px){
   html,body{height:100%;min-height:100vh;overflow:hidden}
