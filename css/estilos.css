@@ -1,4 +1,4 @@
-:root{--brand:#3949ab;--brand-dark:#1a237e;--ok:#25d366;--dock-h:54px;--checkout-h:128px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+:root{--brand:#3949ab;--brand-dark:#1a237e;--ok:#25d366;--dock-h:54px;--checkout-h:152px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:0;height:auto;max-height:none}
 html{-webkit-text-size-adjust:100%;overflow-x:clip;overflow-y:visible}
@@ -28,6 +28,8 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
 .top-hdr{padding:12px 16px 8px;text-align:center;background:#fff;border-bottom:1px solid #e8e8e8}
 .top-hdr h1{margin:0;font-size:1.12rem;color:var(--brand-dark)}
 .top-hdr p{margin:4px 0 0;font-size:0.76rem;color:#666}
+body.cat-buscando .top-hdr,body.cat-buscando .escalon-banner{display:none!important}
+.cat-buscar-total{display:inline-flex}
 .search-wrap{padding:8px 12px 6px;background:#fff;position:sticky;top:0;z-index:8;border-bottom:1px solid #eee}
 .sort-wrap{display:flex;align-items:center;gap:8px;padding:0 12px 10px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:52px;z-index:7}
 .sort-wrap label{font-size:0.72rem;font-weight:700;color:#555;white-space:nowrap}
@@ -49,6 +51,7 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
 @media(min-width:768px){.p-card .p-caract{justify-content:center}}
 .search{width:100%;padding:12px 14px;border:2px solid #7986cb;border-radius:12px;font-size:16px;background:#fafbff}
 .product-list{padding:10px 12px 28px;display:flex;flex-direction:column;gap:10px}
+.cat-busqueda-vacia{margin:8px 12px 0;padding:14px;text-align:center;color:#3949ab;font-weight:700;background:#fff;border-radius:12px;border:1px dashed #c5cae9}
 .cat-layout-section-grid{display:flex;flex-direction:column;gap:10px;width:100%}
 .cat-layout-product-cell{display:flex;flex-direction:column;gap:4px;width:100%;min-width:0}
 .cat-layout-section{width:100%;margin:8px 0 4px;padding:10px 14px 8px;border-bottom:3px solid var(--brand);color:var(--brand-dark);font-weight:800;line-height:1.2;letter-spacing:.02em}
@@ -124,6 +127,8 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
 .cat-c-thumb--zoom:hover,.cat-c-thumb--zoom:focus{box-shadow:0 0 0 2px #7986cb;outline:none;transform:scale(1.02)}
 .cat-c-thumb img{width:100%;height:100%;object-fit:contain;display:block}
 .cat-c-item .noimg{display:flex;align-items:center;justify-content:center;aspect-ratio:1;font-size:2rem;background:#fff;border-radius:8px;width:100%}
+.cat-c-color{width:min(100%,150px);aspect-ratio:1;border-radius:50%;margin:4px auto 0;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.2),inset 0 0 0 1px rgba(0,0,0,.12);position:relative}
+.cat-c-color .p-thumb-qty{right:6px;top:6px}
 .cat-c-preview-lbl{font-size:0.62rem;color:#5c6bc0;font-weight:700;text-align:center;line-height:1.1;cursor:zoom-in;user-select:none;margin:0}
 .cat-c-nom{margin:0;font-size:0.78rem;font-weight:700;line-height:1.25;word-break:break-word}
 .cat-c-pr{margin:0;font-size:0.82rem;font-weight:800;color:var(--brand)}
@@ -143,6 +148,14 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
   body.cat-modal-open .dock-btn span{font-size:0.76rem}
   body.cat-modal-open .dock-badge{font-size:0.72rem;padding:2px 8px;min-width:20px}
   body.cat-modal-open .cat-caratulas-foot{padding:12px 16px}
+  .cat-caratulas-grid--colores{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px}
+  .cat-caratulas-grid--colores .cat-c-item{padding:6px 4px 8px;gap:3px;border-radius:10px}
+  .cat-caratulas-grid--colores .cat-c-color{width:62px;max-width:62px;border-width:2px;margin:2px auto 0;box-shadow:0 2px 8px rgba(0,0,0,.16),inset 0 0 0 1px rgba(0,0,0,.12)}
+  .cat-caratulas-grid--colores .cat-c-preview-lbl{display:none}
+  .cat-caratulas-grid--colores .cat-c-nom{font-size:0.68rem}
+  .cat-caratulas-grid--colores .cat-c-pr{font-size:0.72rem}
+  .cat-caratulas-grid--colores .cat-c-stock{font-size:0.58rem}
+  .cat-caratulas-grid--colores .cat-c-add{min-height:32px!important;font-size:0.68rem!important;padding:6px 4px!important}
 }
 @keyframes checkoutPulse{0%,100%{transform:none}45%{transform:scale(1.015);box-shadow:0 -8px 28px rgba(57,73,171,.28)}}
 @keyframes pedidoPulse{0%,100%{box-shadow:-10px 0 28px rgba(26,35,126,.12)}40%{box-shadow:-10px 0 32px rgba(37,211,102,.55)}}
@@ -198,7 +211,16 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
 .pedido-foot .total{font-size:1.08rem;font-weight:800;color:var(--brand-dark);margin-top:2px}
 .pedido-foot .promo{font-size:0.76rem;color:#2e7d32;margin-top:2px}
 .checkout{position:fixed;left:0;right:0;bottom:calc(var(--dock-h) + var(--safe-b));background:#fff;border-top:2px solid var(--brand);padding:8px 12px 10px;display:flex;flex-direction:column;align-items:stretch;gap:8px;z-index:40;box-shadow:0 -4px 18px rgba(0,0,0,.1);min-height:var(--checkout-h)}
+.checkout-top{display:flex;align-items:center;gap:8px}
 .checkout-info{flex:1;min-width:0}
+.cat-buscar-total{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:2px solid #3949ab;background:#eef0ff;color:#1a237e;border-radius:12px;padding:8px 14px;font-weight:800;font-size:0.92rem;line-height:1;min-height:46px;min-width:96px;cursor:pointer;touch-action:manipulation;animation:catBuscarBorde 1.6s ease-out infinite}
+.cat-buscar-total:active{transform:scale(.98)}
+@keyframes catBuscarBorde{
+  0%{box-shadow:0 0 0 0 rgba(57,73,171,.55);border-color:#1a237e}
+  70%{box-shadow:0 0 0 7px rgba(57,73,171,0);border-color:#5c6bc0}
+  100%{box-shadow:0 0 0 0 rgba(57,73,171,0);border-color:#3949ab}
+}
+@media(prefers-reduced-motion:reduce){.cat-buscar-total{animation:none}}
 .checkout-btns{display:flex;gap:8px;width:100%}
 .checkout-btns .btn-wa,.checkout-btns .btn-breb{flex:1;min-width:0}
 .checkout-info .subtotal{font-size:0.72rem;color:#666;line-height:1.2}
@@ -271,13 +293,18 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
   .pedido-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 16px}
   .pedido-head h2{margin:0}
   .pedido-badge-desk{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;padding:0 8px;border-radius:999px;background:var(--brand);color:#fff;font-size:0.82rem;font-weight:800}
-  .product-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;padding:14px 16px 24px}
-  .product-list--layout{display:flex;flex-direction:column;gap:14px}
-  .product-list--layout .cat-layout-section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;width:100%}
+  .product-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;padding:14px 16px 24px;width:100%;min-width:0;align-self:stretch}
+  .product-list--layout{display:block;width:100%;min-width:0;max-width:none}
+  .product-list--layout .cat-layout-section,
+  .product-list--layout .cat-layout-section-grid,
+  .cat-layout-section-grid > .cat-layout-section,
+  .cat-layout-section-grid > .cat-layout-section-grid{grid-column:1 / -1;width:100%;min-width:0;max-width:100%}
+  .product-list--layout .cat-layout-section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .product-list--layout .cat-layout-divider{grid-column:1/-1}
-  .product-list--layout .cat-layout-product-cell .p-card{height:100%}
-  .p-card{flex-direction:column;text-align:center;padding:14px 12px}
-  .p-thumb{width:100%;min-width:0;height:auto;aspect-ratio:1;max-height:160px}
+  .product-list--layout .cat-layout-product-cell{width:auto;min-width:0}
+  .product-list--layout .cat-layout-product-cell .p-card{height:100%;width:100%}
+  .p-card{flex-direction:column;text-align:center;padding:14px 12px;width:100%}
+  .p-thumb{width:100%;min-width:0;height:auto;aspect-ratio:1;max-height:220px}
   .p-thumb-wrap{max-width:none;width:100%}
   .p-preview-lbl{font-size:0.68rem;margin-top:2px}
   .btn-card-plus{align-self:center;margin-top:4px}
@@ -317,4 +344,67 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef0f
     left:0!important;right:0!important;top:0!important;
     bottom:calc(var(--dock-h) + var(--checkout-h) + var(--safe-b))!important;
   }
+  html.cat-modal-open,
+  body.cat-modal-open{
+    position:fixed!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-height:100%!important;
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+  }
+  body.cat-modal-open .cat-caratulas-overlay{
+    pointer-events:auto!important;
+    overscroll-behavior:none;
+    touch-action:none;
+  }
+  body.cat-modal-open .cat-caratulas-panel{
+    touch-action:auto;
+  }
+  body.cat-modal-open .cat-caratulas-grid{
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+    touch-action:pan-y;
+  }
+  :root{--checkout-h:108px;--dock-h:46px}
+  .checkout,body.cat-modal-open .checkout{
+    padding:4px 10px 4px;
+    gap:4px;
+    min-height:0;
+    border-top-width:1px;
+  }
+  .checkout-top{justify-content:space-between;gap:10px}
+  .checkout-info{text-align:left}
+  .cat-buscar-total{min-height:46px;min-width:104px;padding:8px 16px;font-size:0.95rem;border-radius:12px}
+  .checkout-info .subtotal,.checkout-info .descuento,.checkout-info .promo{font-size:0.64rem;line-height:1.15}
+  .checkout-info .total{font-size:0.92rem;line-height:1.1}
+  .checkout-btns{gap:6px}
+  .checkout .btn-wa,.checkout .btn-breb{min-height:34px;padding:6px 8px;font-size:0.72rem;border-radius:9px}
+  .dock-btn{gap:0;padding:2px 2px}
+  .p-thumb .promo-countdown,.cat-c-thumb .promo-countdown{
+    left:3px;right:auto;top:3px;width:auto;max-width:calc(100% - 6px);
+    padding:2px 4px;font-size:0.52rem;line-height:1.1;letter-spacing:0;border-radius:6px;
+  }
+  .p-thumb .promo-badge,.cat-c-thumb .promo-badge{
+    top:auto;bottom:3px;left:3px;transform:none;width:auto;max-width:calc(100% - 24px);
+    padding:2px 5px;border-radius:6px;border-width:1px;gap:0;
+  }
+  .p-thumb .promo-badge-pct,.cat-c-thumb .promo-badge-pct{font-size:0.68rem}
+  .p-thumb .promo-badge-sub,.cat-c-thumb .promo-badge-sub{display:none}
 }
+.escalon-banner{margin:0;padding:12px 14px 14px;background:linear-gradient(135deg,#1a237e,#3949ab 42%,#ef6c00);color:#fff}
+.escalon-kicker{font-size:0.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.92}
+.escalon-title{margin:4px 0 2px;font-size:1.02rem;line-height:1.25}
+.escalon-lead{margin:0 0 8px;font-size:0.78rem;opacity:.95}
+.escalon-pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.escalon-pill{flex:0 0 auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:4px 8px;text-align:center;min-width:68px}
+.escalon-pill b{display:block;font-size:0.95rem;line-height:1.1}
+.escalon-pill small{display:block;font-size:0.62rem;opacity:.92}
+.escalon-pill.is-on{background:#fff;color:#1a237e}
+.escalon-pill.is-next{outline:2px solid #ffe082}
+.escalon-track{height:8px;background:rgba(255,255,255,.28);border-radius:999px;overflow:hidden;margin-top:8px}
+.escalon-bar{height:100%;width:0;background:#fff;border-radius:999px;transition:width .35s ease}
+.escalon-hint{margin:6px 0 0;font-size:0.8rem;font-weight:800}
