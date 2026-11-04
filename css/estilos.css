@@ -1,4 +1,4 @@
-:root{--brand:#16803c;--brand-dark:#111;--ok:#16803c;--dock-h:54px;--checkout-h:152px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+:root{--brand:#16803c;--brand-dark:#111;--ok:#16803c;--dock-h:54px;--checkout-h:128px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:0;height:auto;max-height:none}
 html{-webkit-text-size-adjust:100%;overflow-x:clip;overflow-y:visible}
@@ -142,6 +142,21 @@ body.cat-buscando .top-hdr,body.cat-buscando .escalon-banner{display:none!import
 .btn-card-plus:hover{transform:translateY(-2px) scale(1.06);box-shadow:0 8px 16px rgba(0,0,0,.2)}
 .btn-card-plus:active{transform:scale(.96)}
 .btn-card-plus:disabled{background:#bdbdbd;cursor:not-allowed;box-shadow:none;font-size:0.72rem;transform:none}
+.pack-popover{position:fixed;inset:0;z-index:520;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(8,12,28,.62);animation:packFondo .22s ease}
+.pack-popover.hidden{display:none!important}
+.pack-popover-card{position:relative;width:min(360px,100%);background:#fff;border-radius:22px;padding:22px 16px 16px;box-shadow:0 24px 60px rgba(0,0,0,.28);animation:packSube .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes packFondo{from{opacity:0}to{opacity:1}}
+@keyframes packSube{from{opacity:0;transform:translateY(22px) scale(.92)}to{opacity:1;transform:none}}
+.pack-popover-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:none;border-radius:50%;background:#f2f2f2;color:#222;font-size:1.05rem;font-weight:800;cursor:pointer;touch-action:manipulation}
+.pack-popover-x:active{transform:scale(.94)}
+.pack-popover-kicker{margin:0 40px 4px 4px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#888;font-weight:800}
+.pack-popover-nom{margin:0 40px 14px 4px;font-size:1.08rem;font-weight:800;color:#111;line-height:1.3}
+.pack-popover .pack-op{width:100%;margin-top:8px;border:2px solid #ececec;background:#fff;color:#111;border-radius:16px;padding:14px 14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;touch-action:manipulation;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.pack-popover .pack-op b{display:block;font-size:1rem}
+.pack-popover .pack-op small{display:block;margin-top:2px;font-size:.74rem;font-weight:700;color:#777}
+.pack-popover .pack-op-precio{font-size:1.05rem;font-weight:800;color:#16803c;white-space:nowrap}
+.pack-popover .pack-op:active{transform:scale(.98);background:#f3fbf5;border-color:#16803c}
+.pack-popover .pack-op:disabled{opacity:.4;cursor:not-allowed}
 .btn-add:active{transform:scale(.98)}
 .btn-add:disabled{background:#bdbdbd;cursor:not-allowed;transform:none}
 .btn-cat-ver{width:100%;padding:10px 12px;border:none;background:var(--brand);color:#fff;border-radius:10px;font-weight:700;font-size:0.86rem;cursor:pointer;min-height:44px;touch-action:manipulation;transition:transform .18s ease,box-shadow .18s ease}
